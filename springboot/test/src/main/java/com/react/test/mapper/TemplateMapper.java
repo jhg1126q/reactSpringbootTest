@@ -1,11 +1,13 @@
 package com.react.test.mapper;
 
 import com.react.test.dto.TemplateDto;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+// @Repository
+@Mapper
 public interface TemplateMapper {
     List<TemplateDto> selectTempList();
 

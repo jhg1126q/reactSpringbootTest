@@ -1,19 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-function App() {
-   const [result, setResult] = useState('')
+const AxiosBoard = () => {
+   const [result, setResult] = useState([]);
 
     useEffect(() => {
         axios.get('/api/findAllBoardList')
-        .then(response => setResult(response.data.length))
+        .then(response => {
+            setResult(response.data);
+        })
         .catch(error => console.log(error))
     }, []);
 
     return (
         <div>
-            백엔드에서 가져온 데이터입니다 : {result} 개의 데이터
+            {result.map((v) => (<h1 key={v.id} >{v.id} : {v.title} </h1>) )}
         </div>
     );
 }
-export default App;
+
+export default AxiosBoard;

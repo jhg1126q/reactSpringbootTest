@@ -6,10 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <IndexNavi></IndexNavi>
-      <header>----------------------------------</header>
       <RouterComponent></RouterComponent>
-      <footer>----------------------------------</footer>
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
