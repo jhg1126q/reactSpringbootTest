@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.react.test.mapper.TemplateMapper">
+
+    <select id="selectTempList" resultType="com.react.test.dto.TemplateDto">
+        SELECT id,
+        author,
+        title,
+        updatetime
+        FROM board;
+    </select>
+
+    <select id="selectTempById" resultType="com.react.test.dto.TemplateDto">
+        SELECT id,
+        author,
+        title,
+        content,
+        updatetime
+        FROM board
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertTemp" parameterType="com.react.test.dto.TemplateDto">
+        INSERT INTO board(author, title, "content", viewoption, createtime, createuser, updatetime, updateuser)
+        values (#{author}, #{title}, #{content}, #{viewoption}, #{createtime}, #{createuser}, #{updatetime}, #{updateuser});
+    </insert>
+
+    <update id="updateTemp" parameterType="com.react.test.dto.TemplateDto">
+        UPDATE tb_template
+        SET content= #{content}
+        , viewoption = #{viewoption}
+        WHERE id = #{boardId}
+    </update>
+
+    <!--테이블 row delete-->
+    <delete id="deleteTempById">
+        DELETE
+        FROM board
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
