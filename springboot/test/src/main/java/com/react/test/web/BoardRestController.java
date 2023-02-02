@@ -20,31 +20,31 @@ public class BoardRestController {
         this.boardService = bs;
     }
 
-    @GetMapping("/findAllBoardList")
+    @GetMapping("/api/findAllBoardList")
     public ResponseEntity<List<TemplateDto>> findAllBoardList() {
         List<TemplateDto> resultList = boardService.findAllBoardList();
         return new ResponseEntity<>(resultList, HttpStatus.OK);
     }
 
-    @GetMapping("/selectTempById")
+    @GetMapping("/api/selectTempById")
     public ResponseEntity<TemplateDto> findBoardById(@Validated @RequestBody TemplateDto templateDto) {
         TemplateDto result = boardService.findBoardById(templateDto.getId());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PostMapping("/insertBoard")
+    @PostMapping("/api/insertBoard")
     public ResponseEntity<Integer> insertBoard(@Validated @RequestBody TemplateDto templateDto) {
         Integer result = boardService.insertBoard(templateDto);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PutMapping("/updateBoard")
+    @PutMapping("/api/updateBoard")
     public ResponseEntity<Integer> updateBoard(@Validated @RequestBody TemplateDto templateDto) {
         Integer result = boardService.updateBoard(templateDto);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteBoard")
+    @DeleteMapping("/api/deleteBoard")
     public ResponseEntity<Integer> deleteBoard(@Validated @RequestBody TemplateDto templateDto) {
         Integer result = boardService.deleteBoardById(templateDto.getId());
         return new ResponseEntity<>(result, HttpStatus.OK);
